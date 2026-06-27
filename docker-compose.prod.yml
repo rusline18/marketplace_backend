@@ -1,0 +1,33 @@
+name: marketplace-prod
+
+services:
+  backend:
+    build:
+      target: prod
+    container_name: marketplace_backend_prod
+    env_file:
+      - .env.production
+    environment:
+      - APP_ENV=production
+    restart: unless-stopped
+    command: >
+      sh -c "php artisan config:cache &&
+             php artisan route:cache &&
+             php artisan view:cache &&
+             php artisan migrate --force &&
+             php-fpm"
+
+  nginx:
+    build:
+      context: .
+      target: nginx-prod
+    container_name: marketplace_nginx_prod
+    restart: unless-stopped
+
+  db:
+    container_name: marketplace_db_prod
+    restart: always
+
+  redis:
+    container_name: marketplace_redis_prod
+    restart: always
