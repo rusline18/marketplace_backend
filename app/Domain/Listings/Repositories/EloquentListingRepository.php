@@ -7,6 +7,7 @@ namespace App\Domain\Listings\Repositories;
 use App\Domain\Listings\Enums\ListingStatus;
 use App\Domain\Listings\Models\Listing;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
 
 class EloquentListingRepository implements ListingRepositoryInterface
 {
@@ -31,7 +32,6 @@ class EloquentListingRepository implements ListingRepositoryInterface
      * Find an active listing by id.
      *
      * @param  int  $id  The listing id.
-     * @return Listing|null
      */
     public function findActive(int $id): ?Listing
     {
@@ -45,7 +45,6 @@ class EloquentListingRepository implements ListingRepositoryInterface
      *
      * @param  int  $id  The listing id.
      * @param  int  $userId  The id of the user expected to own the listing.
-     * @return Listing|null
      */
     public function findOwnedBy(int $id, int $userId): ?Listing
     {
@@ -64,7 +63,7 @@ class EloquentListingRepository implements ListingRepositoryInterface
     public function paginateByStatus(?ListingStatus $status, int $perPage = 15): LengthAwarePaginator
     {
         return Listing::query()
-            ->when($status, fn ($query) => $query->where('status', $status))
+            ->when($status, fn (Builder $query) => $query->where('status', $status))
             ->latest()
             ->paginate($perPage);
     }
