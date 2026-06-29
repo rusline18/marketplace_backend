@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Domain\Listings\Models\Listing;
+use App\Domain\Listings\Policies\ListingPolicy;
+use App\Domain\Listings\Repositories\EloquentListingRepository;
+use App\Domain\Listings\Repositories\ListingRepositoryInterface;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(ListingRepositoryInterface::class, EloquentListingRepository::class);
     }
 
     /**
@@ -19,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::policy(Listing::class, ListingPolicy::class);
     }
 }
