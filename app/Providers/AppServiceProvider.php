@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Domain\Checkins\Models\Checkin;
+use App\Domain\Checkins\Policies\CheckinPolicy;
+use App\Domain\Checkins\Repositories\CheckinRepositoryInterface;
+use App\Domain\Checkins\Repositories\EloquentCheckinRepository;
 use App\Domain\Listings\Models\Listing;
 use App\Domain\Listings\Policies\ListingPolicy;
 use App\Domain\Listings\Repositories\EloquentListingRepository;
@@ -22,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(ListingRepositoryInterface::class, EloquentListingRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, EloquentOrderRepository::class);
+        $this->app->bind(CheckinRepositoryInterface::class, EloquentCheckinRepository::class);
     }
 
     /**
@@ -31,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::policy(Listing::class, ListingPolicy::class);
         Gate::policy(Order::class, OrderPolicy::class);
+        Gate::policy(Checkin::class, CheckinPolicy::class);
     }
 }
