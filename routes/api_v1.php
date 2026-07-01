@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\ListingController;
+use App\Http\Controllers\Api\V1\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/ping', fn () => response()->json(['message' => 'pong']));
@@ -21,4 +22,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/listings/{listing}', [ListingController::class, 'update']);
     Route::post('/listings/{listing}/publish', [ListingController::class, 'publish']);
     Route::post('/listings/{listing}/archive', [ListingController::class, 'archive']);
+
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::get('/orders/{order}', [OrderController::class, 'show']);
+    Route::post('/orders/{order}/cancel', [OrderController::class, 'cancel']);
 });
