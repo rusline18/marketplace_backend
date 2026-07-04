@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup-php
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ runner.os }}-php8.3-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            composer-${{ runner.os }}-php8.3-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Upload vendor artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vendor
+          path: vendor
+          retention-days: 1
+
+  pint:
+    name: Pint (style)
+    needs: install
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup-php
+
+      - name: Download vendor artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vendor
+          path: vendor
+
+      - name: Run Pint
+        run: vendor/bin/pint --test
+
+  larastan:
+    name: Larastan (static analysis)
+    needs: install
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup-php
+
+      - name: Download vendor artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vendor
+          path: vendor
+
+      - name: Run Larastan
+        run: vendor/bin/phpstan analyse --memory-limit=1G --error-format=github
+
+  tests:
+    name: Pest (tests)
+    needs: install
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup PHP
+        uses: ./.github/actions/setup-php
+
+      - name: Download vendor artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vendor
+          path: vendor
+
+      - name: Copy environment file
+        run: cp .env.example .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
+      - name: Run Pest tests
+        run: php artisan test --compact
