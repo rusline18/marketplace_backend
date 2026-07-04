@@ -10,6 +10,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         DB::statement("ALTER TABLE listings ADD CONSTRAINT listings_status_check CHECK (status IN ('draft', 'pending_review', 'active', 'rejected', 'archived'))");
     }
 
@@ -18,6 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        if (DB::getDriverName() === 'sqlite') {
+            return;
+        }
+
         DB::statement('ALTER TABLE listings DROP CONSTRAINT listings_status_check');
     }
 };
