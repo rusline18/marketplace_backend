@@ -39,13 +39,6 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
-      - name: Upload vendor artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: vendor
-          path: vendor
-          retention-days: 1
-
   pint:
     name: Pint (style)
     needs: install
@@ -60,11 +53,11 @@ jobs:
       - name: Setup PHP
         uses: ./.github/actions/setup-php
 
-      - name: Download vendor artifact
-        uses: actions/download-artifact@v4
+      - name: Restore Composer dependencies
+        uses: actions/cache/restore@v4
         with:
-          name: vendor
           path: vendor
+          key: composer-${{ runner.os }}-php8.3-${{ hashFiles('composer.lock') }}
 
       - name: Run Pint
         run: vendor/bin/pint --test
@@ -83,11 +76,11 @@ jobs:
       - name: Setup PHP
         uses: ./.github/actions/setup-php
 
-      - name: Download vendor artifact
-        uses: actions/download-artifact@v4
+      - name: Restore Composer dependencies
+        uses: actions/cache/restore@v4
         with:
-          name: vendor
           path: vendor
+          key: composer-${{ runner.os }}-php8.3-${{ hashFiles('composer.lock') }}
 
       - name: Run Larastan
         run: vendor/bin/phpstan analyse --memory-limit=1G --error-format=github
@@ -106,11 +99,11 @@ jobs:
       - name: Setup PHP
         uses: ./.github/actions/setup-php
 
-      - name: Download vendor artifact
-        uses: actions/download-artifact@v4
+      - name: Restore Composer dependencies
+        uses: actions/cache/restore@v4
         with:
-          name: vendor
           path: vendor
+          key: composer-${{ runner.os }}-php8.3-${{ hashFiles('composer.lock') }}
 
       - name: Copy environment file
         run: cp .env.example .env
