@@ -24,7 +24,6 @@ class ListingController extends Controller
      * List listings for moderation, optionally filtered by status.
      *
      * @param  Request  $request  May contain a `status` query parameter.
-     * @return AnonymousResourceCollection
      */
     public function index(Request $request): AnonymousResourceCollection
     {
@@ -38,7 +37,6 @@ class ListingController extends Controller
      *
      * @param  Listing  $listing  The listing to approve.
      * @param  ApproveListingAction  $action  The action that performs the approval.
-     * @return ListingResource
      */
     public function approve(Listing $listing, ApproveListingAction $action): ListingResource
     {
@@ -50,7 +48,6 @@ class ListingController extends Controller
      *
      * @param  Listing  $listing  The listing to reject.
      * @param  RejectListingAction  $action  The action that performs the rejection.
-     * @return ListingResource
      */
     public function reject(Listing $listing, RejectListingAction $action): ListingResource
     {

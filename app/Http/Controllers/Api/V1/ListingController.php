@@ -30,7 +30,6 @@ class ListingController extends Controller
      * List active listings, optionally filtered by search term and category.
      *
      * @param  Request  $request  May contain `search` and `category_id` query parameters.
-     * @return AnonymousResourceCollection
      */
     public function index(Request $request): AnonymousResourceCollection
     {
@@ -46,7 +45,6 @@ class ListingController extends Controller
      * Show a single listing if it is active or owned by the authenticated user.
      *
      * @param  Listing  $listing  The listing to show.
-     * @return ListingResource
      *
      * @throws HttpResponseException If the listing is not visible to the requester.
      */
@@ -66,7 +64,6 @@ class ListingController extends Controller
      *
      * @param  StoreListingRequest  $request  The validated listing attributes.
      * @param  CreateListingAction  $action  The action that creates the listing.
-     * @return JsonResponse
      */
     public function store(StoreListingRequest $request, CreateListingAction $action): JsonResponse
     {
@@ -81,7 +78,6 @@ class ListingController extends Controller
      * @param  UpdateListingRequest  $request  The validated listing attributes.
      * @param  Listing  $listing  The listing to update.
      * @param  UpdateListingAction  $action  The action that performs the update.
-     * @return ListingResource
      */
     public function update(UpdateListingRequest $request, Listing $listing, UpdateListingAction $action): ListingResource
     {
@@ -96,7 +92,6 @@ class ListingController extends Controller
      * @param  Request  $request  The incoming request.
      * @param  Listing  $listing  The draft listing to publish.
      * @param  PublishListingAction  $action  The action that performs the submission.
-     * @return ListingResource
      */
     public function publish(Request $request, Listing $listing, PublishListingAction $action): ListingResource
     {
@@ -111,7 +106,6 @@ class ListingController extends Controller
      * @param  Request  $request  The incoming request.
      * @param  Listing  $listing  The active listing to archive.
      * @param  ArchiveListingAction  $action  The action that performs the archival.
-     * @return ListingResource
      */
     public function archive(Request $request, Listing $listing, ArchiveListingAction $action): ListingResource
     {

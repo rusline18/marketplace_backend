@@ -23,7 +23,6 @@ interface ListingRepositoryInterface
      * Find an active listing by id.
      *
      * @param  int  $id  The listing id.
-     * @return Listing|null
      */
     public function findActive(int $id): ?Listing;
 

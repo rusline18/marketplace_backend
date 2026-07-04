@@ -29,7 +29,6 @@ class ListingImage extends Model
     /**
      * Get the factory instance used to create this model
      * .
-     * @return ListingImageFactory
      */
     protected static function newFactory(): ListingImageFactory
     {

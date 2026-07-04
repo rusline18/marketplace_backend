@@ -1,0 +1,295 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\Domain\\Checkins\\Models\\Checkin\:\:listing\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Listing, App\\Domain\\Checkins\\Models\\Checkin\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Listing, \$this\(App\\Domain\\Checkins\\Models\\Checkin\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Checkins/Models/Checkin.php
+
+		-
+			message: '#^Method App\\Domain\\Checkins\\Models\\Checkin\:\:order\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Orders\\Models\\Order, App\\Domain\\Checkins\\Models\\Checkin\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Orders\\Models\\Order, \$this\(App\\Domain\\Checkins\\Models\\Checkin\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Checkins/Models/Checkin.php
+
+		-
+			message: '#^Method App\\Domain\\Checkins\\Models\\Checkin\:\:user\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Models\\User, App\\Domain\\Checkins\\Models\\Checkin\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Models\\User, \$this\(App\\Domain\\Checkins\\Models\\Checkin\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Checkins/Models/Checkin.php
+
+		-
+			message: '#^Property App\\Domain\\Listings\\Actions\\ApproveListingAction\:\:\$listings is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: app/Domain/Listings/Actions/ApproveListingAction.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Listings\\Enums\\ListingStatus\:\:PendingReview will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Listings/Actions/ApproveListingAction.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Domain/Listings/Actions/ApproveListingAction.php
+
+		-
+			message: '#^Property App\\Domain\\Listings\\Actions\\ArchiveListingAction\:\:\$listings is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: app/Domain/Listings/Actions/ArchiveListingAction.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Listings\\Enums\\ListingStatus\:\:Active will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Listings/Actions/ArchiveListingAction.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Domain/Listings/Actions/ArchiveListingAction.php
+
+		-
+			message: '#^Property App\\Domain\\Listings\\Actions\\PublishListingAction\:\:\$listings is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: app/Domain/Listings/Actions/PublishListingAction.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Listings\\Enums\\ListingStatus\:\:Draft will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Listings/Actions/PublishListingAction.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Domain/Listings/Actions/PublishListingAction.php
+
+		-
+			message: '#^Property App\\Domain\\Listings\\Actions\\RejectListingAction\:\:\$listings is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: app/Domain/Listings/Actions/RejectListingAction.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Listings\\Enums\\ListingStatus\:\:PendingReview will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Listings/Actions/RejectListingAction.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Domain/Listings/Actions/RejectListingAction.php
+
+		-
+			message: '#^Generic type Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Category\> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\HasMany\: TRelatedModel, TDeclaringModel$#'
+			identifier: generics.lessTypes
+			count: 1
+			path: app/Domain/Listings/Models/Category.php
+
+		-
+			message: '#^Generic type Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Listing\> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\HasMany\: TRelatedModel, TDeclaringModel$#'
+			identifier: generics.lessTypes
+			count: 1
+			path: app/Domain/Listings/Models/Category.php
+
+		-
+			message: '#^Method App\\Domain\\Listings\\Models\\Category\:\:children\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Category\> but returns Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Category, \$this\(App\\Domain\\Listings\\Models\\Category\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Listings/Models/Category.php
+
+		-
+			message: '#^Method App\\Domain\\Listings\\Models\\Category\:\:listings\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Listing\> but returns Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Listing, \$this\(App\\Domain\\Listings\\Models\\Category\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Listings/Models/Category.php
+
+		-
+			message: '#^Method App\\Domain\\Listings\\Models\\Category\:\:parent\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Category, App\\Domain\\Listings\\Models\\Category\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Category, \$this\(App\\Domain\\Listings\\Models\\Category\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Listings/Models/Category.php
+
+		-
+			message: '#^Generic type Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\ListingImage\> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\HasMany\: TRelatedModel, TDeclaringModel$#'
+			identifier: generics.lessTypes
+			count: 1
+			path: app/Domain/Listings/Models/Listing.php
+
+		-
+			message: '#^Method App\\Domain\\Listings\\Models\\Listing\:\:category\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Category, App\\Domain\\Listings\\Models\\Listing\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Category, \$this\(App\\Domain\\Listings\\Models\\Listing\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Listings/Models/Listing.php
+
+		-
+			message: '#^Method App\\Domain\\Listings\\Models\\Listing\:\:images\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\ListingImage\> but returns Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\ListingImage, \$this\(App\\Domain\\Listings\\Models\\Listing\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Listings/Models/Listing.php
+
+		-
+			message: '#^Method App\\Domain\\Listings\\Models\\Listing\:\:user\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Models\\User, App\\Domain\\Listings\\Models\\Listing\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Models\\User, \$this\(App\\Domain\\Listings\\Models\\Listing\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Listings/Models/Listing.php
+
+		-
+			message: '#^Method App\\Domain\\Listings\\Models\\ListingImage\:\:listing\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Listing, App\\Domain\\Listings\\Models\\ListingImage\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Listing, \$this\(App\\Domain\\Listings\\Models\\ListingImage\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Listings/Models/ListingImage.php
+
+		-
+			message: '#^Property App\\Domain\\Orders\\Models\\Order\:\:\$status \(string\) does not accept App\\Domain\\Orders\\Enums\\OrderStatus\:\:Cancelled\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Domain/Orders/Actions/CancelOrderAction.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between string and App\\Domain\\Orders\\Enums\\OrderStatus\:\:Cancelled will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: app/Domain/Orders/Actions/CancelOrderAction.php
+
+		-
+			message: '#^Property App\\Domain\\Orders\\Actions\\ConfirmOrderAction\:\:\$orders is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: app/Domain/Orders/Actions/ConfirmOrderAction.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Orders\\Enums\\OrderStatus\:\:Pending will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Orders/Actions/ConfirmOrderAction.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Domain/Orders/Actions/ConfirmOrderAction.php
+
+		-
+			message: '#^Result of \|\| is always true\.$#'
+			identifier: booleanOr.alwaysTrue
+			count: 1
+			path: app/Domain/Orders/Actions/CreateOrderAction.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Listings\\Enums\\ListingStatus\:\:Active will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Orders/Actions/CreateOrderAction.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Domain/Orders/Actions/CreateOrderAction.php
+
+		-
+			message: '#^Generic type Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Orders\\Models\\OrderItem\> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\HasMany\: TRelatedModel, TDeclaringModel$#'
+			identifier: generics.lessTypes
+			count: 1
+			path: app/Domain/Orders/Models/Order.php
+
+		-
+			message: '#^Generic type Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Orders\\Models\\OrderStatusHistory\> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\HasMany\: TRelatedModel, TDeclaringModel$#'
+			identifier: generics.lessTypes
+			count: 1
+			path: app/Domain/Orders/Models/Order.php
+
+		-
+			message: '#^Method App\\Domain\\Orders\\Models\\Order\:\:items\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Orders\\Models\\OrderItem\> but returns Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Orders\\Models\\OrderItem, \$this\(App\\Domain\\Orders\\Models\\Order\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Orders/Models/Order.php
+
+		-
+			message: '#^Method App\\Domain\\Orders\\Models\\Order\:\:statusHistories\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Orders\\Models\\OrderStatusHistory\> but returns Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Orders\\Models\\OrderStatusHistory, \$this\(App\\Domain\\Orders\\Models\\Order\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Orders/Models/Order.php
+
+		-
+			message: '#^Method App\\Domain\\Orders\\Models\\Order\:\:user\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Models\\User, App\\Domain\\Orders\\Models\\Order\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Models\\User, \$this\(App\\Domain\\Orders\\Models\\Order\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Orders/Models/Order.php
+
+		-
+			message: '#^Method App\\Domain\\Orders\\Models\\OrderItem\:\:listing\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Listing, App\\Domain\\Orders\\Models\\OrderItem\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Listings\\Models\\Listing, \$this\(App\\Domain\\Orders\\Models\\OrderItem\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Orders/Models/OrderItem.php
+
+		-
+			message: '#^Method App\\Domain\\Orders\\Models\\OrderItem\:\:order\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Orders\\Models\\Order, App\\Domain\\Orders\\Models\\OrderItem\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Orders\\Models\\Order, \$this\(App\\Domain\\Orders\\Models\\OrderItem\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Orders/Models/OrderItem.php
+
+		-
+			message: '#^Method App\\Domain\\Orders\\Models\\OrderStatusHistory\:\:order\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Orders\\Models\\Order, App\\Domain\\Orders\\Models\\OrderStatusHistory\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Orders\\Models\\Order, \$this\(App\\Domain\\Orders\\Models\\OrderStatusHistory\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Orders/Models/OrderStatusHistory.php
+
+		-
+			message: '#^Result of && is always false\.$#'
+			identifier: booleanAnd.alwaysFalse
+			count: 1
+			path: app/Domain/Orders/Policies/OrderPolicy.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between string and App\\Domain\\Orders\\Enums\\OrderStatus\:\:Pending will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: app/Domain/Orders/Policies/OrderPolicy.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between string and App\\Domain\\Listings\\Enums\\ListingStatus\:\:Active will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: app/Http/Controllers/Api/V1/ListingController.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Resources/Admin/ListingResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Resources/Admin/OrderResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Resources/Api/V1/CheckinResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Resources/Api/V1/ListingResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Resources/Api/V1/OrderResource.php

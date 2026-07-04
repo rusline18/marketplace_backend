@@ -31,7 +31,6 @@ class Admin extends Authenticatable
 
     /**
      * Get the factory instance used to create this model.
-     * @return AdminFactory
      */
     protected static function newFactory(): AdminFactory
     {

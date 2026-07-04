@@ -1,5 +1,6 @@
 includes:
     - vendor/larastan/larastan/extension.neon
+    - phpstan-baseline.neon
 
 parameters:
     paths:
@@ -8,6 +9,3 @@ parameters:
     level: 5
 
     tmpDir: storage/framework/phpstan
-
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false

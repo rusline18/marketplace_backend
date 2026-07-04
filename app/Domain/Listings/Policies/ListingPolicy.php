@@ -14,7 +14,6 @@ class ListingPolicy
      *
      * @param  User  $user  The user attempting the action.
      * @param  Listing  $listing  The listing being updated.
-     * @return bool
      */
     public function update(User $user, Listing $listing): bool
     {
@@ -26,7 +25,6 @@ class ListingPolicy
      *
      * @param  User  $user  The user attempting the action.
      * @param  Listing  $listing  The listing being archived.
-     * @return bool
      */
     public function archive(User $user, Listing $listing): bool
     {

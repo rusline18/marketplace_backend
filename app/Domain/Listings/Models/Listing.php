@@ -63,7 +63,6 @@ class Listing extends Model
 
     /**
      * Get the factory instance used to create this model.
-     * @return ListingFactory
      */
     protected static function newFactory(): ListingFactory
     {
