@@ -44,12 +44,12 @@ class EloquentListingRepository implements ListingRepositoryInterface
      * Find a listing by id, scoped to a specific owner.
      *
      * @param  int  $id  The listing id.
-     * @param  int  $userId  The id of the user expected to own the listing.
+     * @param  int  $partnerId  The id of the partner expected to own the listing.
      */
-    public function findOwnedBy(int $id, int $userId): ?Listing
+    public function findOwnedBy(int $id, int $partnerId): ?Listing
     {
         return Listing::query()
-            ->where('user_id', $userId)
+            ->where('partner_id', $partnerId)
             ->find($id);
     }
 
@@ -63,6 +63,23 @@ class EloquentListingRepository implements ListingRepositoryInterface
     public function paginateByStatus(?ListingStatus $status, int $perPage = 15): LengthAwarePaginator
     {
         return Listing::query()
+            ->when($status, fn (Builder $query) => $query->where('status', $status))
+            ->latest()
+            ->paginate($perPage);
+    }
+
+    /**
+     * Paginate listings owned by a specific partner, optionally filtered by status.
+     *
+     * @param  int  $partnerId  The id of the owning partner.
+     * @param  ListingStatus|null  $status  Status to filter by, or null for all statuses.
+     * @param  int  $perPage  Number of results per page.
+     * @return LengthAwarePaginator<int, Listing>
+     */
+    public function paginateOwnedBy(int $partnerId, ?ListingStatus $status, int $perPage = 15): LengthAwarePaginator
+    {
+        return Listing::query()
+            ->where('partner_id', $partnerId)
             ->when($status, fn (Builder $query) => $query->where('status', $status))
             ->latest()
             ->paginate($perPage);

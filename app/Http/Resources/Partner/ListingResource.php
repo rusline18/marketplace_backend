@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Resources\Admin;
+namespace App\Http\Resources\Partner;
 
 use App\Domain\Listings\Models\Listing;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class ListingResource extends JsonResource
 {
     /**
-     * Transform the listing into an array for the admin API.
+     * Transform the listing into an array for the partner API.
      *
      * @param  Request  $request  The incoming request.
      * @return array<string, mixed>

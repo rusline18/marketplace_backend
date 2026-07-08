@@ -30,9 +30,9 @@ interface ListingRepositoryInterface
      * Find a listing by id, scoped to a specific owner.
      *
      * @param  int  $id  The listing id.
-     * @param  int  $userId  The id of the user expected to own the listing.
+     * @param  int  $partnerId  The id of the partner expected to own the listing.
      */
-    public function findOwnedBy(int $id, int $userId): ?Listing;
+    public function findOwnedBy(int $id, int $partnerId): ?Listing;
 
     /**
      * Paginate listings, optionally filtered by status.
@@ -42,6 +42,16 @@ interface ListingRepositoryInterface
      * @return LengthAwarePaginator<int, Listing>
      */
     public function paginateByStatus(?ListingStatus $status, int $perPage = 15): LengthAwarePaginator;
+
+    /**
+     * Paginate listings owned by a specific partner, optionally filtered by status.
+     *
+     * @param  int  $partnerId  The id of the owning partner.
+     * @param  ListingStatus|null  $status  Status to filter by, or null for all statuses.
+     * @param  int  $perPage  Number of results per page.
+     * @return LengthAwarePaginator<int, Listing>
+     */
+    public function paginateOwnedBy(int $partnerId, ?ListingStatus $status, int $perPage = 15): LengthAwarePaginator;
 
     /**
      * Persist the given listing.

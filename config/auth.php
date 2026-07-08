@@ -1,5 +1,6 @@
 <?php
 
+use App\Domain\Partners\Models\Partner;
 use App\Domain\Users\Models\Admin;
 use App\Models\User;
 
@@ -53,6 +54,11 @@ return [
             'driver' => 'sanctum',
             'provider' => 'admins',
         ],
+
+        'partner' => [
+            'driver' => 'sanctum',
+            'provider' => 'partners',
+        ],
     ],
 
     /*
@@ -81,6 +87,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => Admin::class,
+        ],
+
+        'partners' => [
+            'driver' => 'eloquent',
+            'model' => Partner::class,
         ],
 
         // 'users' => [

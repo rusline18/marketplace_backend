@@ -48,10 +48,6 @@ class CreateOrderAction
                 throw new InvalidArgumentException("Listing {$item['listing_id']} is not available for purchase.");
             }
 
-            if ($listing->user_id === $userId) {
-                throw new InvalidArgumentException('You cannot order your own listing.');
-            }
-
             $order->items()->create([
                 'listing_id' => $listing->id,
                 'quantity' => $item['quantity'],

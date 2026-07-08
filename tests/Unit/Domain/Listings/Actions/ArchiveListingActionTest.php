@@ -4,7 +4,7 @@ use App\Domain\Listings\Actions\ArchiveListingAction;
 use App\Domain\Listings\Enums\ListingStatus;
 use App\Domain\Listings\Models\Listing;
 use App\Domain\Listings\Policies\ListingPolicy;
-use App\Models\User;
+use App\Domain\Partners\Models\Partner;
 
 it('archives an active listing', function () {
     $listing = Listing::factory()->active()->create();
@@ -21,8 +21,8 @@ it('refuses to archive a listing that is not active', function () {
 })->throws(InvalidArgumentException::class);
 
 it('denies archiving someone else\'s listing via the policy', function () {
-    $owner = User::factory()->create();
-    $other = User::factory()->create();
+    $owner = Partner::factory()->create();
+    $other = Partner::factory()->create();
     $listing = Listing::factory()->for($owner)->active()->create();
 
     expect((new ListingPolicy)->archive($other, $listing))->toBeFalse();

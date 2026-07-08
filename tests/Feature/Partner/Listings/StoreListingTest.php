@@ -1,19 +1,19 @@
 <?php
 
 use App\Domain\Listings\Models\Category;
-use App\Models\User;
+use App\Domain\Partners\Models\Partner;
 
 it('rejects an unauthenticated request to create a listing', function () {
-    $this->postJson('/api/v1/listings', [])
+    $this->postJson('/api/partner/listings', [])
         ->assertStatus(401);
 });
 
-it('lets an authenticated user create a draft listing', function () {
-    $user = User::factory()->create();
+it('lets an approved partner create a draft listing', function () {
+    $partner = Partner::factory()->approved()->create();
     $category = Category::factory()->create();
 
-    $this->actingAs($user, 'sanctum')
-        ->postJson('/api/v1/listings', [
+    $this->actingAs($partner, 'partner')
+        ->postJson('/api/partner/listings', [
             'category_id' => $category->id,
             'title' => 'My listing',
             'description' => 'A description',

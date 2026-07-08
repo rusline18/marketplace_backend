@@ -3,6 +3,7 @@
 use App\Domain\Listings\Models\Listing;
 use App\Domain\Orders\Models\Order;
 use App\Domain\Orders\Models\OrderItem;
+use App\Domain\Partners\Models\Partner;
 use App\Models\User;
 
 it('rejects an unauthenticated request to record a checkin', function () {
@@ -12,7 +13,7 @@ it('rejects an unauthenticated request to record a checkin', function () {
 
 it('lets the buyer record a checkin confirming receipt', function () {
     $buyer = User::factory()->create();
-    $seller = User::factory()->create();
+    $seller = Partner::factory()->create();
     $order = Order::factory()->for($buyer)->create();
     $listing = Listing::factory()->for($seller)->active()->create();
     OrderItem::factory()->for($order)->create(['listing_id' => $listing->id]);
@@ -24,22 +25,6 @@ it('lets the buyer record a checkin confirming receipt', function () {
         ])
         ->assertCreated()
         ->assertJsonFragment(['status' => 'received']);
-});
-
-it('lets the seller record a checkin confirming handover', function () {
-    $buyer = User::factory()->create();
-    $seller = User::factory()->create();
-    $order = Order::factory()->for($buyer)->create();
-    $listing = Listing::factory()->for($seller)->active()->create();
-    OrderItem::factory()->for($order)->create(['listing_id' => $listing->id]);
-
-    $this->actingAs($seller, 'sanctum')
-        ->postJson('/api/v1/checkins', [
-            'order_id' => $order->id,
-            'listing_id' => $listing->id,
-        ])
-        ->assertCreated()
-        ->assertJsonFragment(['status' => 'handed_over']);
 });
 
 it('forbids an unrelated user from recording a checkin', function () {

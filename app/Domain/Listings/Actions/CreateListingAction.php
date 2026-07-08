@@ -16,16 +16,16 @@ class CreateListingAction
     ) {}
 
     /**
-     * Create a new draft listing owned by the given user.
+     * Create a new draft listing owned by the given partner.
      *
-     * @param  int  $userId  The id of the user who owns the listing.
+     * @param  int  $partnerId  The id of the partner who owns the listing.
      * @param  array{category_id: int, title: string, description: string, price: float}  $data  Listing attributes.
      * @return Listing The newly created draft listing.
      */
-    public function handle(int $userId, array $data): Listing
+    public function handle(int $partnerId, array $data): Listing
     {
         $listing = new Listing([
-            'user_id' => $userId,
+            'partner_id' => $partnerId,
             'category_id' => $data['category_id'],
             'title' => $data['title'],
             'slug' => Str::slug($data['title']).'-'.Str::random(6),

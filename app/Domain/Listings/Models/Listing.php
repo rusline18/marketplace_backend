@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Listings\Models;
 
 use App\Domain\Listings\Enums\ListingStatus;
-use App\Models\User;
+use App\Domain\Partners\Models\Partner;
 use Database\Factories\ListingFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['user_id', 'category_id', 'title', 'slug', 'description', 'price', 'status', 'published_at'])]
+#[Fillable(['partner_id', 'category_id', 'title', 'slug', 'description', 'price', 'status', 'published_at'])]
 class Listing extends Model
 {
     /** @use HasFactory<ListingFactory> */
@@ -32,13 +32,13 @@ class Listing extends Model
     }
 
     /**
-     * Get the owning user.
+     * Get the owning partner.
      *
-     * @return BelongsTo<User, Listing>
+     * @return BelongsTo<Partner, Listing>
      */
-    public function user(): BelongsTo
+    public function partner(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Partner::class);
     }
 
     /**

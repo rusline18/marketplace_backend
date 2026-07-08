@@ -5,29 +5,29 @@ declare(strict_types=1);
 namespace App\Domain\Listings\Policies;
 
 use App\Domain\Listings\Models\Listing;
-use App\Models\User;
+use App\Domain\Partners\Models\Partner;
 
 class ListingPolicy
 {
     /**
-     * Determine whether the user can update the listing.
+     * Determine whether the partner can update the listing.
      *
-     * @param  User  $user  The user attempting the action.
+     * @param  Partner  $partner  The partner attempting the action.
      * @param  Listing  $listing  The listing being updated.
      */
-    public function update(User $user, Listing $listing): bool
+    public function update(Partner $partner, Listing $listing): bool
     {
-        return $user->id === $listing->user_id;
+        return $partner->id === $listing->partner_id;
     }
 
     /**
-     * Determine whether the user can archive the listing.
+     * Determine whether the partner can archive the listing.
      *
-     * @param  User  $user  The user attempting the action.
+     * @param  Partner  $partner  The partner attempting the action.
      * @param  Listing  $listing  The listing being archived.
      */
-    public function archive(User $user, Listing $listing): bool
+    public function archive(Partner $partner, Listing $listing): bool
     {
-        return $user->id === $listing->user_id;
+        return $partner->id === $listing->partner_id;
     }
 }

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Domain\Listings\Enums\ListingStatus;
 use App\Domain\Listings\Models\Listing;
-use App\Models\User;
+use App\Domain\Partners\Models\Partner;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -23,7 +23,7 @@ class ListingFactory extends Factory
         $title = fake()->unique()->sentence(3);
 
         return [
-            'user_id' => User::factory(),
+            'partner_id' => Partner::factory(),
             'category_id' => CategoryFactory::new(),
             'title' => $title,
             'slug' => Str::slug($title).'-'.fake()->unique()->numberBetween(1, 1000000),
