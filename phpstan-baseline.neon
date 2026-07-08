@@ -139,7 +139,7 @@ parameters:
 			path: app/Domain/Listings/Models/Listing.php
 
 		-
-			message: '#^Method App\\Domain\\Listings\\Models\\Listing\:\:user\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Models\\User, App\\Domain\\Listings\\Models\\Listing\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Models\\User, \$this\(App\\Domain\\Listings\\Models\\Listing\)\>\.$#'
+			message: '#^Method App\\Domain\\Listings\\Models\\Listing\:\:partner\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Partners\\Models\\Partner, App\\Domain\\Listings\\Models\\Listing\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo\<App\\Domain\\Partners\\Models\\Partner, \$this\(App\\Domain\\Listings\\Models\\Listing\)\>\.$#'
 			identifier: return.type
 			count: 1
 			path: app/Domain/Listings/Models/Listing.php
@@ -259,10 +259,64 @@ parameters:
 			path: app/Domain/Orders/Policies/OrderPolicy.php
 
 		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Partners\\Enums\\PartnerStatus\:\:Pending will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Partners/Actions/ApprovePartnerAction.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Domain/Partners/Actions/ApprovePartnerAction.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Partners\\Enums\\PartnerStatus\:\:Pending will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Partners/Actions/RejectPartnerAction.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Domain/Partners/Actions/RejectPartnerAction.php
+
+		-
+			message: '#^Generic type Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Listing\> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\HasMany\: TRelatedModel, TDeclaringModel$#'
+			identifier: generics.lessTypes
+			count: 1
+			path: app/Domain/Partners/Models/Partner.php
+
+		-
+			message: '#^Method App\\Domain\\Partners\\Models\\Partner\:\:listings\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Listing\> but returns Illuminate\\Database\\Eloquent\\Relations\\HasMany\<App\\Domain\\Listings\\Models\\Listing, \$this\(App\\Domain\\Partners\\Models\\Partner\)\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Partners/Models/Partner.php
+
+		-
+			message: '#^Call to function abort_unless\(\) with false and 404 will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: app/Http/Controllers/Api/V1/ListingController.php
+
+		-
 			message: '#^Strict comparison using \=\=\= between string and App\\Domain\\Listings\\Enums\\ListingStatus\:\:Active will always evaluate to false\.$#'
 			identifier: identical.alwaysFalse
 			count: 1
 			path: app/Http/Controllers/Api/V1/ListingController.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between string and App\\Domain\\Partners\\Enums\\PartnerStatus\:\:Approved will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Http/Controllers/Partner/Api/AuthController.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: app/Http/Controllers/Partner/Api/AuthController.php
 
 		-
 			message: '#^Cannot access property \$value on string\.$#'
@@ -275,6 +329,12 @@ parameters:
 			identifier: property.nonObject
 			count: 1
 			path: app/Http/Resources/Admin/OrderResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Resources/Admin/PartnerResource.php
 
 		-
 			message: '#^Cannot access property \$value on string\.$#'
@@ -293,3 +353,15 @@ parameters:
 			identifier: property.nonObject
 			count: 1
 			path: app/Http/Resources/Api/V1/OrderResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Resources/Partner/ListingResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Resources/Partner/PartnerResource.php
